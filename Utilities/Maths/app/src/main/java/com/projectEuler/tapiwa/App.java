@@ -12,6 +12,6 @@ public class App
     {
         System.out.printf( "Enter position: " );
 	int nth = new Scanner(System.in).nextInt();
-	System.out.printf("\nfibonacci(%d) = %d\n", nth, Fibonacci.fibonacci(nth));
+	System.out.printf("\nfibonacci(%d) = %d\n", nth, Fibonacci,fibonacci(nth));
     }
 }
