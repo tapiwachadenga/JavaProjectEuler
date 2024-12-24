@@ -12,8 +12,7 @@ public class Palindrome
 		String strNumber = String.valueOf(number);
 		int start = 0;
 		int end = strNumber.length() - 1;
-		// System.out.printf("\n%d\t%d\n", start, end);
-		// return end;
+		
 		while(start < end)
 		{
 			if(strNumber.charAt(start) != strNumber.charAt(end))
@@ -53,18 +52,10 @@ public class Palindrome
 	
 	public static int[] rangeFinder(int numberOfDigits)
 	{
-		int[] arr = new int[2];
-
 		if(numberOfDigits <= 0 || numberOfDigits > 9)
 			throw new IllegalArgumentException("\nEnter number of digits from 0 to 9.\n");
-		
-		arr[0] = (int)Math.pow( 10, numberOfDigits - 1 );
-		
-		arr[0] = arr[0] == 1 ? 0: arr[0];
-
-		arr[1] = arr[0] * 10 - 1;
-		if(arr[1] < 0) arr[1] = 9;
-
-		return arr; 
+	
+		int min = (int)Math.pow( 10, numberOfDigits - 1 );
+		return new int[] {min == 1 ? 0 : min, min * 10 - 1};	
 	}
 }
