@@ -3,6 +3,7 @@ package com.projectEuler.tapiwa;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.lang.Math;
 
 public class Palindrome
 {
@@ -23,7 +24,11 @@ public class Palindrome
 		return true;
 	}
 
-	public static int largestPalindrome(int start, int end)
+	public static int largestPalindromeProduct(int numberOfDigits)
+	{
+		return largestPalindromeHelper(rangeFinder(numberOfDigits)[0], rangeFinder(numberOfDigits)[1]);
+	}
+	public static int largestPalindromeHelper(int start, int end)
 	{
 		if(start > end)
 		{
@@ -43,9 +48,23 @@ public class Palindrome
 				if(isPalindrome(product))
 					arr.add(product);
 			}	
-		// return arr.get(0);
 		return Collections.max(arr);
-		// int max = arr.get(0);
+	}
+	
+	public static int[] rangeFinder(int numberOfDigits)
+	{
+		int[] arr = new int[2];
 
+		if(numberOfDigits <= 0 || numberOfDigits > 9)
+			throw new IllegalArgumentException("\nEnter number of digits from 0 to 9.\n");
+		
+		arr[0] = (int)Math.pow( 10, numberOfDigits - 1 );
+		
+		arr[0] = arr[0] == 1 ? 0: arr[0];
+
+		arr[1] = arr[0] * 10 - 1;
+		if(arr[1] < 0) arr[1] = 9;
+
+		return arr; 
 	}
 }
